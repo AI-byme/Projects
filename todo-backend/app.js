@@ -14,6 +14,16 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(cors({
+  origin: ["http://localhost:5173", "https://projects-production-0fac.up.railway.app"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+}));
+
+// Tambahan penting untuk preflight
+app.options("*", cors());
+
 // Routing
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todosRoutes);
