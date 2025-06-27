@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
 require("dotenv").config();
 const authRoutes = require("./routes/auth");
 const todosRoutes = require("./routes/todos");
-const cors = require("cors");
 
 // Middleware parsing JSON
 app.use(express.json());
