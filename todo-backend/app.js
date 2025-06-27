@@ -1,19 +1,14 @@
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
 require("dotenv").config();
 const authRoutes = require("./routes/auth");
 const todosRoutes = require("./routes/todos");
+const cors = require("cors");
 
 // Middleware parsing JSON
 app.use(express.json());
 
-// Logging sederhana
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
-
+// Middleware CORS (penting!)
 app.use(cors({
   origin: ["http://localhost:5173", "https://projects-production-0fac.up.railway.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -21,8 +16,14 @@ app.use(cors({
   credentials: true,
 }));
 
-// Tambahan penting untuk preflight
+// Tangani preflight request
 app.options("*", cors());
+
+// Logging sederhana
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
 
 // Routing
 app.use("/api/auth", authRoutes);
