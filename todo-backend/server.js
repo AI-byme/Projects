@@ -3,13 +3,6 @@ require("dotenv").config();
 const connectDB = require("./config/db");
 const cors = require("cors");
 
-app.use(cors({
-  origin: ["http://localhost:5173", "https://projects-production-0fac.up.railway.app"],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-}));
-
 const PORT = process.env.PORT || 3000;
 
 connectDB().then(() => {
