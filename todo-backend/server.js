@@ -3,9 +3,8 @@ require("dotenv").config();
 const connectDB = require("./config/db");
 const cors = require("cors");
 
-app.use(cors({
-  origin: ["http://localhost:5173", "https://projects-production-0fac.up.railway.app"],
-}));
+app.use(cors()); // Allow all origins (sementara saja)
+
 
 
 
