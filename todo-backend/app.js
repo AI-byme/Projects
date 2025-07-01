@@ -16,8 +16,6 @@ app.use(cors({
   credentials: true,
 }));
 
-// Tangani preflight request
-app.options("*", cors());
 
 // Logging sederhana
 app.use((req, res, next) => {
